@@ -29,7 +29,6 @@ class Engine {
         this.stage = new PIXI.Container();
         this.graphics = new PIXI.Graphics();
         this.fpsMax = params.fpsMax;
-        console.log("change2");
         this.container = params.containerId ? document.getElementById(params.containerId) || document.body : document.body;
         this.container.appendChild(this.renderer.view);
     } // constructor
@@ -200,8 +199,6 @@ function create() {
     animatedCoin = new PIXI.AnimatedSprite(textureArray);
     animatedCoin.animationSpeed = 0.15;
     animatedCoin.anchor.set(0.5, 0.5);
-    animatedCoin.width = engine.renderer.width/8;
-    animatedCoin.height = engine.renderer.width/8;
     resetCoin();
     animatedCoin.interactive = true;
     animatedCoin.buttonMode = true;
@@ -221,16 +218,18 @@ function create() {
         .on('touchmove', onDragMove);
 
     animatedCoin.play();
+    animatedCoin.width = engine.renderer.width/8;
+    animatedCoin.height = engine.renderer.width/8;
     engine.stage.addChild(animatedCoin);
     
     /* FPS */
-    //const fpsMeterItem = document.createElement('div');
-    //fpsMeterItem.classList.add('fps');
-    //engine.container.appendChild(fpsMeterItem);
+    const fpsMeterItem = document.createElement('div');
+    fpsMeterItem.classList.add('fps');
+    engine.container.appendChild(fpsMeterItem);
 
-    //fpsMeter = new FpsMeter(() => {
-    //    fpsMeterItem.innerHTML = 'FPS: ' + fpsMeter.getFrameRate().toFixed(2).toString();
-    //});
+    fpsMeter = new FpsMeter(() => {
+        //fpsMeterItem.innerHTML = 'FPS: ' + fpsMeter.getFrameRate().toFixed(2).toString();
+    });
 
     setInterval(update, 1000.0 / engine.fpsMax);
     render();
