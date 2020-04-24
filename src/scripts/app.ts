@@ -52,7 +52,7 @@ let creditText : PIXI.Text;
 let gameState : number;
 let credits : number;
 let comments : string[] = [
-    "Drag The Coin To The Slot!!", 
+    "Drag The Coin To The Slot!!!", 
     "Stuck At Home? Keep Going!", 
     "Still need more Credits!",
     "This game is expensive to play!",
