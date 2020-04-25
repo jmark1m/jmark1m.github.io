@@ -54,18 +54,20 @@ let credits : number;
 let comments : string[] = [
     "Drag The Coin To The Slot!!!", 
     "Stuck At Home? Keep Going!", 
-    "Still need more Credits!",
+    "You still need more Credits!",
     "This game is expensive to play!",
     "Coronavirus got you down?",
     "The Local Arcade is closed?",
-    "Arcades aren't essential?",
+    "Arcades aren't essential?!",
     "You've come to the right spot!",
-    "This is Arcade At Home.",
+    "This is Arcade Memories.",
+    "A Place to Remember All The Fun.",
     "Keep pumping in the coins.",
     "Should we play Skeeball\u00ae?",
     "Big Hundo Pocket!",
     "Gutter ball?",
     "Whack that mole.",
+    "Two Whackers at the same time!",
     "Glow Minigolf is next, definately.",
     "Hole In One, Free Game!",
     "Salad bar is all you can eat.",
@@ -78,7 +80,7 @@ let comments : string[] = [
     "Winning isn't everything.",
     "Level Up!",
     "You won the JACKPOT!",
-    "Time to cash in on the gummy candy",
+    "Time to cash in on the gummy candy.",
     "Climbing wall is easier for kids.",
     "Your still here?",
     "Pizza is here.",
@@ -91,13 +93,14 @@ let comments : string[] = [
     "Win The Big Bass Bonus!",
     "It's a game of skill.",
     "Greatest Game Of All Time.",
+    "No really, Greatest Game Of All Time.",
     "Don't stop now, you can win it again.",
     "Card Swipes aren't the same.",
     "Laser Tag?!",
     "Red Vest, Blue Vest, Ready, Aim, Go.",
     "Tokens are best.",
     "Let's play QuickDrop",
-    "Hurry, Before the Timer Runs Out.",
+    "Hurry, Before the Time Runs Out.",
     "JACKPOT!  That's two!",
     "How about a game of DDR?",
     "Basketball challenge?",
@@ -111,7 +114,41 @@ let comments : string[] = [
     "Or the mystery box?",
     "Save them for next time?",
     "What's your favorite game?",
-    "Arcade Closed!"
+    "Arcade Closed!",
+    "So who's memories are these?",
+    "Just some designer who worked on games.",
+    "For almost 15 years!",
+    "It was fun while it lasted.",
+    "But CoronaVirus takes its toll",
+    "And now the world has changed.",
+    "Here are some of the games",
+    "I was honored to work on",
+    "(Only those that saw the light of day!)",
+    "American Idol Superstar",
+    "Hummer Space Adventure",
+    "Hummer Off Roadin'",
+    "Swish, Little Basketball",
+    "Jam Session",
+    "Crank It and Crank It Revolution",
+    "Road Trip and Beerball",
+    "Sink It and Full Tilt",
+    "Pull My Finger(Purple Monkey Game)",
+    "Nascar Showdown",
+    "Big Bass Wheel",
+    "Artic Chomp",
+    "Grid Iron Blitz",
+    "Quik Drop",
+    "Pop The Lock",
+    "Grand Piano Keys",
+    "Ticket Monster",
+    "Perfection",
+    "Scooby Doo Game",
+    "Skeeball\u00ae (Fusion)",
+    "Connect 4 Basketball",
+    "Loved every minute off it.",
+    "Love you all!",
+    "Goodbye arcade.",
+    "Thanks for the memories!"
 ];
 
 
@@ -152,11 +189,10 @@ function create() {
     coinslot.x = engine.renderer.width/2 + engine.renderer.width / 4;
     coinslot.y = engine.renderer.height / 2;
     coinslot.width = engine.renderer.width/8;
-    coinslot.height = engine.renderer.width/8;
+    coinslot.height = engine.renderer.width/8*(1.2);
     engine.stage.addChild(coinslot);
 
-
-    titleText = new PIXI.Text("Arcade At Home", {
+    titleText = new PIXI.Text("Arcade Memories", {
         fontSize: 50,
         fontFamily: 'Arial',
         fill: "#ffffff",
