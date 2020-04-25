@@ -52,7 +52,7 @@ let creditText : PIXI.Text;
 let gameState : number;
 let credits : number;
 let comments : string[] = [
-    "Drag The Coin To The Slot!!!", 
+    "Drag The Coin To The Slot!",
     "Stuck At Home? Keep Going!", 
     "You still need more Credits!",
     "This game is expensive to play!",
@@ -105,6 +105,7 @@ let comments : string[] = [
     "How about a game of DDR?",
     "Basketball challenge?",
     "Maybe That Connect 4 Basketball Game!",
+    "Virtual Reality.  Not ready yet.",
     "Boss FIGHT!",
     "Ticket Horde!",
     "You Won A Big Eraser!",
@@ -118,22 +119,29 @@ let comments : string[] = [
     "So who's memories are these?",
     "Just some designer who worked on games.",
     "For almost 15 years!",
+    "15 years of my life!!",
     "It was fun while it lasted.",
     "But CoronaVirus takes its toll",
     "And now the world has changed.",
-    "Here are my credits",
-    "(Only those that saw the light of day!)",
+    "Thanks to my co-workers.",
+    "I'll miss all of the constructive arguing!",
+    "But in the end the games were better for it.",
+    "The games I worked on follow.",
+    "Ticket Troopers",
     "American Idol Superstar",
     "Hummer Space Adventure",
     "Hummer Off Roadin'",
     "Swish, Little Basketball",
     "Jam Session",
     "Crank It and Crank It Revolution",
-    "Road Trip and Beerball",
-    "Sink It and Full Tilt",
+    "Road Trip",
+    "Beerball",
+    "Sink It",
+    "Full Tilt",
     "Pull My Finger(Purple Monkey Game)",
     "Nascar Showdown",
     "Big Bass Wheel",
+    "Pig Out",
     "Artic Chomp",
     "Grid Iron Blitz",
     "Quik Drop",
@@ -141,13 +149,20 @@ let comments : string[] = [
     "Grand Piano Keys",
     "Ticket Monster",
     "Perfection",
+    "Prize Hub (not even a game!!)",
     "Scooby Doo Game",
     "Skeeball\u00ae (Fusion)",
     "Connect 4 Basketball",
+    "And I'm not even going to list the prototypes",
+    "So many thrown in the trash.",
     "Loved every minute off it.",
     "Love you all!",
+    "Thanks BTE!",
     "Goodbye arcade.",
-    "Thanks for the memories!"
+    "Thanks for the memories!",
+    "I'm going to go work for a bank maybe.",
+    "See you around the town...",
+    "Permanently Closed!"
 ];
 
 
@@ -252,10 +267,11 @@ function create() {
         .on('mousemove', onDragMove)
         .on('touchmove', onDragMove);
 
-    animatedCoin.play();
+    
     animatedCoin.width = engine.renderer.width/8;
     animatedCoin.height = engine.renderer.width/8;
     engine.stage.addChild(animatedCoin);
+    animatedCoin.play();
     
     /* FPS */
     const fpsMeterItem = document.createElement('div');
@@ -276,7 +292,6 @@ function update() {
     /* ***************************** */
     /* Update your Game Objects here */
     /* ***************************** */
-
 
 } // update
 
@@ -335,6 +350,7 @@ function resetCoin()
 
 function recenterText(someText : PIXI.Text)
 {
+    //console.log(" " + someText.width +  engine.renderer.width);
     if( someText.width >= engine.renderer.width-50 )
     {
         someText.width = engine.renderer.width-50;
