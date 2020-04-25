@@ -268,8 +268,13 @@ function create() {
         .on('touchmove', onDragMove);
 
     
+    
     animatedCoin.width = engine.renderer.width/8;
     animatedCoin.height = engine.renderer.width/8;
+    animatedCoin.onLoop = function() {
+        animatedCoin.width = engine.renderer.width/8;
+        animatedCoin.height = engine.renderer.width/8;
+    };
     engine.stage.addChild(animatedCoin);
     animatedCoin.play();
     
