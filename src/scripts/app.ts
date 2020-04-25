@@ -86,8 +86,10 @@ let comments : string[] = [
     "Pizza is here.",
     "Are you part of the lock-in?",
     "It's raining outside, no go-karts",
-    "One Word, Claw Game",
+    "One Word, Claw Game.",
     "Okay, That was two words.",
+    "Game of Skill, Or Game Of Chance?",
+    "Depends of the menu settings!",
     "Big Squishy Balls!",
     "Lets Play Big Bass Wheel!",
     "Win The Big Bass Bonus!",
@@ -150,8 +152,8 @@ let comments : string[] = [
     "Ticket Monster",
     "Perfection",
     "Prize Hub (not even a game!!)",
-    "Scooby Doo Game",
-    "Skeeball\u00ae (Fusion)",
+    "Scooby Doo Wheel",
+    "Skeeball\u00ae (Fusion and Modern Editions)",
     "Connect 4 Basketball",
     "And I'm not even going to list the prototypes",
     "So many thrown in the trash.",
@@ -162,7 +164,13 @@ let comments : string[] = [
     "Thanks for the memories!",
     "I'm going to go work for a bank maybe.",
     "See you around the town...",
-    "Permanently Closed!"
+    "Permanently Closed!",
+    "Game Over",
+    "Game Over",
+    "Game Over",
+    "No Really, Game Over.",
+    "Stop Pumping in Credits Now.",
+    "Game Over"
 ];
 
 
@@ -217,17 +225,7 @@ function create() {
     recenterText(titleText);
     titleText.y = engine.renderer.height/28;
     engine.stage.addChild(titleText);
-    mainText = new PIXI.Text(comments[0], {
-        fontSize: 50,
-        fontFamily: 'Arial',
-        fill: "#ffffff",
-        align: "center",
-        stroke: "#aaaaaa",
-        strokeThickness: 0
-    });
-    recenterText(mainText);
-    mainText.y = engine.renderer.height/6;
-    engine.stage.addChild(mainText);
+    createCommentText();
 
     creditText = new PIXI.Text("Credits 0", {
         fontSize: 50,
@@ -334,6 +332,7 @@ function onDragEnd()
     {
         gameState = gameState + 1;
         credits = credits + 1;
+        mainText.scale.set(1);
         if( credits < comments.length )
             mainText.text = comments[credits];
         else
@@ -353,12 +352,31 @@ function resetCoin()
     animatedCoin.y = engine.renderer.height / 2;
 }
 
+function createCommentText()
+{
+    engine.stage.removeChild(mainText);
+    mainText = new PIXI.Text(comments[credits], {
+        fontSize: 50,
+        fontFamily: 'Arial',
+        fill: "#ffffff",
+        align: "center",
+        stroke: "#aaaaaa",
+        strokeThickness: 0
+    });
+    recenterText(mainText);
+    mainText.y = engine.renderer.height/6;
+    engine.stage.addChild(mainText);
+}
+
 function recenterText(someText : PIXI.Text)
 {
+    let scalefac : number = 1;
     //console.log(" " + someText.width +  engine.renderer.width);
-    if( someText.width >= engine.renderer.width-50 )
+    while( someText.width >= engine.renderer.width-50 )
     {
-        someText.width = engine.renderer.width-50;
+        //someText.width = engine.renderer.width-50;
+        someText.scale.x = scalefac;
+        scalefac = scalefac - 0.05;
     }
     someText.x = engine.renderer.width/2 - someText.width/2;
 }
